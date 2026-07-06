@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Americ · Productos Shein</title>
+    <meta name="description" content="Comprá productos seleccionados de Shein con envíos a toda Argentina. Nuevos productos cada semana.">
+    <meta name="theme-color" content="#f9f7f4">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Americ · Productos Shein">
+    <meta property="og:description" content="Comprá productos seleccionados de Shein con envíos a toda Argentina.">
+    <meta property="og:image" content="img/productos/producto1.webp">
+    <meta property="og:url" content="https://tudominio.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Americ">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="img/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' font-weight='700' fill='%23111'>A</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: linear-gradient(180deg, #f9f7f4 0%, #f0ede8 100%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            color: #1a1a1a;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 0 0 40px;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 1100px;
+            background: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        @media (min-width: 768px) {
+            .contenedor {
+                border-radius: 28px;
+                margin: 24px;
+                min-height: calc(100vh - 48px);
+            }
+        }
+
+        .cabecera {
+            padding: 24px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #f0ede8;
+            background: #fff;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icono {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 22px;
+            color: #fff;
+            letter-spacing: -0.5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo-texto {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.4px;
+            color: #1a1a1a;
+        }
+
+        .principal {
+            padding: 36px 28px;
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            .principal {
+                padding: 24px 16px;
+            }
+            .cabecera {
+                padding: 18px 16px;
+            }
+        }
+
+        .encabezado-seccion {
+            margin-bottom: 8px;
+        }
+
+        .titulo-seccion {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #0a0a0a;
+            margin-bottom: 8px;
+        }
+
+        .subtitulo-seccion {
+            font-size: 0.9rem;
+            color: #6b6b6b;
+            margin-bottom: 32px;
+            line-height: 1.5;
+            max-width: 500px;
+        }
+
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .productos {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+                margin-bottom: 32px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .productos {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        .tarjeta {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0ede8;
+            position: relative;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+            border-color: #e0d9ce;
+        }
+
+        .tarjeta:active {
+            transform: scale(0.97);
+        }
+
+        .imagen-producto {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            overflow: hidden;
+            background: #fafaf8;
+        }
+
+        .imagen-producto img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .tarjeta:hover .imagen-producto img {
+            transform: scale(1.06);
+        }
+
+        .cuerpo-tarjeta {
+            padding: 18px 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .nombre-producto {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.5;
+            letter-spacing: -0.2px;
+        }
+
+        .boton-comprar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: auto;
+            padding: 14px 0;
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boton-comprar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .boton-comprar:hover::before {
+            left: 100%;
+        }
+
+        .boton-comprar:hover {
+            background: #2a2a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton-comprar:active {
+            transform: scale(0.96);
+        }
+
+        .boton-comprar .flecha {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .tarjeta:hover .boton-comprar .flecha {
+            transform: translateX(5px);
+        }
+
+        .icono-carrito {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .seccion-proximamente {
+            margin-top: 0;
+            padding: 48px 24px;
+            background: #fafaf8;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid #f0ede8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .seccion-proximamente:hover {
+            background: #f5f3ef;
+            border-color: #e0d9ce;
+        }
+
+        .icono-proximamente {
+            width: 48px;
+            height: 48px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .icono-proximamente svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .titulo-proximamente {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.3px;
+        }
+
+        .texto-proximamente {
+            font-size: 0.9rem;
+            color: #6b6b6b;
+            line-height: 1.6;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .pie {
+            padding: 24px 28px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #999;
+            border-top: 1px solid #f0ede8;
+            background: #fafaf8;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pie strong {
+            color: #555;
+        }
+
+        .disclaimer {
+            font-size: 0.7rem;
+            color: #bbb;
+            line-height: 1.4;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background: #1a1a1a;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            white-space: nowrap;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tarjeta {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        .tarjeta:nth-child(1) { animation-delay: 0.05s; }
+        .tarjeta:nth-child(2) { animation-delay: 0.12s; }
+        .tarjeta:nth-child(3) { animation-delay: 0.19s; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <header class="cabecera">
+            <a href="#" class="logo" aria-label="Americ - Inicio">
+                <div class="logo-icono">A</div>
+                <span class="logo-texto">Americ</span>
+            </a>
+        </header>
+
+        <main class="principal">
+            <div class="encabezado-seccion">
+                <h1 class="titulo-seccion">Productos disponibles</h1>
+            </div>
+            <p class="subtitulo-seccion">
+                Cada producto es elegido manualmente por su estilo y calidad. Comprá directo en Shein.
+            </p>
+
+            <div class="productos">
+                <a href="https://onelink.shein.com/41/5utuqt5tmtli" target="_blank" rel="noopener" class="tarjeta">
+                    <div class="imagen-producto">
+                        <img src="img/productos/producto1.webp" alt="Camiseta hombre Bloke Core número 25 estilo Y2K" loading="lazy">
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <h2 class="nombre-producto">Aesthetic Post Bloke Core Número 25 Camiseta de Hombre con Estampado Numérico Cuello Redondo Manga Corta Blanca Verano Streetwear</h2>
+                        <span class="boton-comprar">
+                            <svg class="icono-carrito" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Comprar en Shein <span class="flecha">→</span>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://onelink.shein.com/41/5utusw4zwwn0" target="_blank" rel="noopener" class="tarjeta">
+                    <div class="imagen-producto">
+                        <img src="img/productos/producto2.webp" alt="Bolso elegante con lazo y cadena color negro" loading="lazy">
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <h2 class="nombre-producto">Nuevo bolso de moda con decoración de lazo y cadena, ideal para fiestas, salidas y uso diario. Elegante bolso de señora</h2>
+                        <span class="boton-comprar">
+                            <svg class="icono-carrito" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Comprar en Shein <span class="flecha">→</span>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://onelink.shein.com/41/5utv8cjprw27" target="_blank" rel="noopener" class="tarjeta">
+                    <div class="imagen-producto">
+                        <img src="img/productos/producto3.webp" alt="Camiseta mujer estampado Nueva York" loading="lazy">
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <h2 class="nombre-producto">Resyla Camiseta de manga corta con cuello redondo y estampado gráfico de la letra Nueva York para mujer</h2>
+                        <span class="boton-comprar">
+                            <svg class="icono-carrito" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Comprar en Shein <span class="flecha">→</span>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="seccion-proximamente">
+                <div class="icono-proximamente">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                </div>
+                <h3 class="titulo-proximamente">Más productos en camino</h3>
+                <p class="texto-proximamente">
+                    Estamos seleccionando nuevas prendas y accesorios.<br>
+                    Muy pronto se sumarán a la colección.
+                </p>
+            </div>
+        </main>
+
+        <footer class="pie">
+            <p>© 2026 <strong>Americ</strong> · Afiliado de Shein</p>
+            <p>Al hacer clic en <strong>"Comprar en Shein"</strong> serás redirigido a la tienda oficial para completar tu compra.</p>
+            <p class="disclaimer">Recibimos una pequeña comisión por compras realizadas a través de estos enlaces, sin ningún costo adicional para vos. Todos los productos son seleccionados manualmente.</p>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast">
+        <span class="check-icon">✓</span> Redirigiendo a Shein para completar tu compra
+    </div>
+
+    <script>
+        (() => {
+            const toast = document.getElementById('toast');
+            let timer;
+            const mostrarToast = () => {
+                toast.classList.add('visible');
+                clearTimeout(timer);
+                timer = setTimeout(() => toast.classList.remove('visible'), 2500);
+            };
+
+            document.querySelectorAll('.tarjeta[href*="shein.com"]').forEach(link => {
+                link.addEventListener('click', mostrarToast);
+            });
+
+            document.querySelectorAll('.boton-comprar').forEach(boton => {
+                boton.addEventListener('click', (e) => {
+                    const tarjeta = boton.closest('.tarjeta');
+                    if (tarjeta) {
+                        const href = tarjeta.getAttribute('href');
+                        if (href) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.open(href, '_blank', 'noopener');
+                            mostrarToast();
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
